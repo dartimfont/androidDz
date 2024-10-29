@@ -12,7 +12,9 @@ class MainActivity : AppCompatActivity() {
 
     private val adapter = CardAdapter()
 
-    private var savedCards = ArrayList<Int>();
+    companion object {
+        var savedCards = ArrayList<Int>();
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
