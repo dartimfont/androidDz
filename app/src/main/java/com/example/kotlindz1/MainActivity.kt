@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var savedCards = ArrayList<Int>();
+        var deletedCards = ArrayList<Int>();
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,12 +35,15 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState != null) {
             savedCards = savedInstanceState.getIntegerArrayList("savedList")!!
+            deletedCards = savedInstanceState.getIntegerArrayList("deletedList")!!
             adapter.addAll(savedCards)
+            adapter.deleted.addAll(deletedCards)
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putIntegerArrayList("savedList", adapter.items)
+        outState.putIntegerArrayList("deletedList", adapter.deleted)
     }
 }

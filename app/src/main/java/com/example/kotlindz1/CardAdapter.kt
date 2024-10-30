@@ -1,6 +1,5 @@
 package com.example.kotlindz1
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 class CardAdapter() : RecyclerView.Adapter<CardViewHolder>() {
 
     val items = ArrayList<Int>();
-    val deleted = ArrayDeque<Int>();
+    val deleted = ArrayList<Int>();
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         return CardViewHolder(
@@ -23,7 +22,7 @@ class CardAdapter() : RecyclerView.Adapter<CardViewHolder>() {
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         holder.bind(items[position])
         holder.itemView.setOnClickListener {
-            deleted.addLast(items[position])
+            deleted.add(items[position])
             removeItem(position)
         }
     }
